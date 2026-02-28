@@ -1,0 +1,13 @@
+[project]
+name = "telegram-translet-bot"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "aiogram>=3.25.0",
+    "deep-translator>=1.11.4",
+    "dotenv>=0.9.9",
+    "googletrans>=4.0.2",
+    "python-telegram-bot>=22.6",
+    "telethon>=1.42.0",
+]
