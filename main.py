@@ -38,7 +38,7 @@ async def commands_start(message: Message, state: FSMContext):
     await state.clear()
     ikb = InlineKeyboardBuilder()
     ikb.row(
-        InlineKeyboardButton(text="Calculator 🖩", callback_data="calcula_"),
+        InlineKeyboardButton(text="Calculator 🔢", callback_data="calcula_"),
         InlineKeyboardButton(text="Languages 🇺🇿", callback_data="language_"),
     )
     ikb.adjust(2)
@@ -48,7 +48,7 @@ async def commands_start(message: Message, state: FSMContext):
 @dp.callback_query(F.data == 'calcula_')
 async def start_calc(callback: CallbackQuery, state: FSMContext):
     await state.set_state(BotState.waiting_for_example)
-    await callback.message.answer("🖩 Kalkulyator rejimi yoqildi.\nMisolni yozing (masalan: 80+10*(55/11)):")
+    await callback.message.answer("📊 Kalkulyator rejimi yoqildi.\n\nMisolni yozing (masalan: 80+10*(55/11)):")
     await callback.answer()
 
 
