@@ -101,7 +101,7 @@ async def open_link_essential_3(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'essential_4')
 async def open_link_essential_4(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAP7aaNT8whtG7ccvqjOUAw_IWdF3FoAAqcLAAIMeolKyUl9lAUTkaY6BA"
+    pdf_id = "BQACAgIAAxkBAAIB_mmjdc4EjQQD5fWh0tJkJMsRnMY4AAKnCwACDHqJSvn-JZHdvP4qOgQ"
     await callback.message.answer_document(document=pdf_id, caption="Mana siz so'ragan Essential 4 kitobi! 📚",
                                            protect_content=True)
     await callback.answer()
@@ -109,7 +109,7 @@ async def open_link_essential_4(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'essential_5')
 async def open_link_essential_5(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAP9aaNUL1OSzPLucXxh3twi-6WUA1AAAqgLAAIMeolK2gN_TkCn7-46BA"
+    pdf_id = "BQACAgIAAxkBAAICAAFpo3XxfsnqoHn9iYOzyogR5t4FdwACqAsAAgx6iUqGDZZcu61DAjoE"
     await callback.message.answer_document(document=pdf_id, caption="Mana siz so'ragan Essential 5 kitobi! 📚",
                                            protect_content=True)
     await callback.answer()
@@ -117,7 +117,7 @@ async def open_link_essential_5(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'destination_b1')
 async def open_link_1(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAPAaaMwr5o5Z_qxXZABMVgRRAtwhr8AArkdAAJUExFIgLaOUQmMjd46BA"
+    pdf_id = "BQACAgIAAxkBAAICAmmjdh1TihU6Pm52oDdSbZpwpyoyAAK5HQACVBMRSF7seBxIPuTbOgQ"
     await callback.message.answer_document(document=pdf_id, caption="Mana siz so'ragan Destination B1 kitobi! 📚",
                                            protect_content=True)
     await callback.answer()
@@ -125,7 +125,7 @@ async def open_link_1(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'destination_b1_grammar')
 async def open_link_1(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAIBdGmjZwPwFCR7P99nK5EGyNY7H8sbAAKRCgAC_BM4S8SEbYJWsk2IOgQ"
+    pdf_id = "BQACAgIAAxkBAAICBGmjdk5BTbuatOHy6Ej9oI5hn0UPAAKoAgACJgnoSqoGoJrb0slDOgQ"
     await callback.message.answer_document(document=pdf_id,
                                            caption="Mana siz so'ragan Destination B1 grammar va lug'at kitobi! 📚",
                                            protect_content=True)
@@ -134,7 +134,7 @@ async def open_link_1(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'destinationPhrasal_b1')
 async def open_link_1(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAIBfWmjauJ3lU2eZv13csyUI83bB_4GAAJCmQACa6wYSTXAAAEhZo5rOzoE"
+    pdf_id = "BQACAgIAAxkBAAICBmmjdnahiWKonKN-BfK5w_h7iBZWAAK2iQACBMohSUn-e2FHQaNoOgQ"
     await callback.message.answer_document(document=pdf_id,
                                            caption="Mana siz so'ragan Destination B1 Phrasal Verbs kitobi! 📚",
                                            protect_content=True)
@@ -143,7 +143,7 @@ async def open_link_1(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'destination_b2')
 async def open_link_2(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAO4aaMvvW3LCrt4GZj86iuBwveaAAHWAAKrGAACVdkxSMSrDLFnpM2tOgQ"
+    pdf_id = "BQACAgIAAxkBAAICCGmjdp671sjJzkTG_562dX1Ey519AAKrGAACVdkxSGyxufhxFFwfOgQ"
 
     await callback.message.answer_document(document=pdf_id, caption="Mana siz so'ragan Destination B2 kitobi! 📚",
                                            protect_content=True)
@@ -152,7 +152,7 @@ async def open_link_2(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'destination_b2_grammar')
 async def open_link_2(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAIBeWmjaDfxzN6jTSemTRvSMOWJu4NRAAKpHQACVBMRSCnJM6qmgBugOgQ"
+    pdf_id = "BQACAgIAAxkBAAICCmmjds7VjnVuBwMdJVdNMqjhTxpHAAKpHQACVBMRSE-H52CYv6OoOgQ"
 
     await callback.message.answer_document(document=pdf_id,
                                            caption="Mana siz so'ragan Destination B2 grammar kitobi! 📚",
@@ -162,7 +162,7 @@ async def open_link_2(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'destinationPhrasal_b2')
 async def open_link_3(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAPjaaM5qDy57Vv_bfJVYXmHlXxoViMAAqYdAAJUExFIfKKLtdyo5_k6BA"
+    pdf_id = "BQACAgIAAxkBAAICDGmjdvE90-5Mz2OcDr6rpTJibPMmAAKmHQACVBMRSDsVublbMSskOgQ"
 
     await callback.message.answer_document(document=pdf_id,
                                            caption="Mana siz so'ragan Destination B2,C1,C2 Prasal Verbs So'zlari! 📚",
@@ -172,7 +172,7 @@ async def open_link_3(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'destination_c1c2_grammar')
 async def open_link_3(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAIBe2mjaWhgvupaz6w1DbsPgf2PL7WxAALdHQACVBMRSLhTM4sN3yEFOgQ"
+    pdf_id = "BQACAgIAAxkBAAICDmmjdy8ZM6-Fc-BHmV06jF0i0uXSAALdHQACVBMRSMlTchFYGUafOgQ"
 
     await callback.message.answer_document(document=pdf_id,
                                            caption="Mana siz so'ragan Destination C1,C2 grammar kitobi! 📚",
