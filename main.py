@@ -77,7 +77,7 @@ async def show_dictionary(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'essential_1')
 async def open_link_essential_1(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAPzaaNSdMIXCPm9mYCpac5Vqql_vaoAAqQLAAIMeolK_abZa0b2o746BA"
+    pdf_id = "BQACAgIAAxkBAAIB3mmjUlsohT1uttxROP7RhRTOPZfdAAKkCwACDHqJSjV8W4j7y10kOgQ"
     await callback.message.answer_document(document=pdf_id, caption="Mana siz so'ragan Destination 1 kitobi! 📚",
                                            protect_content=True)
     await callback.answer()
@@ -85,7 +85,7 @@ async def open_link_essential_1(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'essential_2')
 async def open_link_essential_2(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAP1aaNTBb_KmpIraaSrT3aaX89Nq4IAAqULAAIMeolKkwbzISsDgi46BA"
+    pdf_id = "BQACAgIAAxkBAAIB9mmjdR5dxFYYsl71gwj7Aer0YXfcAAKlCwACDHqJSr3ULQxl-Q0jOgQ"
     await callback.message.answer_document(document=pdf_id, caption="Mana siz so'ragan Essential 2 kitobi! 📚",
                                            protect_content=True)
     await callback.answer()
@@ -93,7 +93,7 @@ async def open_link_essential_2(callback: CallbackQuery):
 
 @dp.callback_query(F.data == 'essential_3')
 async def open_link_essential_3(callback: CallbackQuery):
-    pdf_id = "BQACAgIAAxkBAAP3aaNTUXK3BUZZSBfOrV_edROf5ysAAqYLAAIMeolKHY-vHnOOgKo6BA"
+    pdf_id = "BQACAgIAAxkBAAIB-GmjdWDKV_i0JNRTfkJIS4UlbAmzAAKmCwACDHqJSg6tquzmMyROOgQ"
     await callback.message.answer_document(document=pdf_id, caption="Mana siz so'ragan Essential 3 kitobi! 📚",
                                            protect_content=True)
     await callback.answer()
