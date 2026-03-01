@@ -140,6 +140,7 @@ async def get_to_main(callback: CallbackQuery, state: FSMContext):
 
 @dp.callback_query(F.data == 'motor_bice_')
 async def show_motor_bice(callback: CallbackQuery):
+    await callback.message.delete()
     ikb = InlineKeyboardBuilder()
     ikb.row(InlineKeyboardButton(text="Traffic Rider 🏍️", callback_data="motor_bike_"),
             InlineKeyboardButton(text="Moto Bike Stunt 🏍️💨", callback_data="bike_stunt_"),
@@ -200,6 +201,7 @@ async def get_to_main(callback: CallbackQuery, state: FSMContext):
 
 @dp.callback_query(F.data == 'track_')
 async def show_truck(callback: CallbackQuery):
+    await callback.message.delete()
     ikb = InlineKeyboardBuilder()
     ikb.row(InlineKeyboardButton(text="Truck Simulator 🚛", callback_data="simulator_t"),
             InlineKeyboardButton(text="Truckers of Europe 3 🚚", callback_data="europa_"),
