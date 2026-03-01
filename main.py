@@ -119,7 +119,7 @@ async def start_universal_quiz(callback: CallbackQuery):
         )
 
         quiz_data[user_id]["correct_options"][msg.poll.id] = item['c']
-        await asyncio.sleep(10)
+        await asyncio.sleep(15)
 
     if user_id in quiz_data and quiz_data[user_id].get("is_active"):
         final_score = quiz_data[user_id]["score"]
