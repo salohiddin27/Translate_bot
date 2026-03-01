@@ -101,31 +101,31 @@ async def show_war(callback: CallbackQuery):
 
 
 @dp.callback_query(F.data == 'archers_')
-async def show_war(callback: CallbackQuery):
+async def show_archers(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.byv.TheArchers2"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'ninja_')
-async def show_war(callback: CallbackQuery):
+async def show_ninja(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=ninja.creed.sniper.real3d.action.free.android"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'birds_')
-async def show_war(callback: CallbackQuery):
+async def show_birds(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.rovio.angrybirdsfriends"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'immortal_')
-async def show_war(callback: CallbackQuery):
+async def show_immortal(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.wolffun.thetanimmortal"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'shooter_')
-async def show_war(callback: CallbackQuery):
+async def show_shooter(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.action_games.archer.shooter.attack"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
@@ -156,37 +156,37 @@ async def show_motor_bice(callback: CallbackQuery):
 
 
 @dp.callback_query(F.data == 'motor_bike_')
-async def show_moto(callback: CallbackQuery):
+async def show_bike(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.skgames.trafficrider"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'bike_stunt_')
-async def show_moto(callback: CallbackQuery):
+async def show_stunt(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.gt.moto.bike.wheelie.stunt.race.game"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'bike_')
-async def show_moto(callback: CallbackQuery):
+async def show_bikes(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.kn.bikestunt3.racing.driving.games"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'race_')
-async def show_moto(callback: CallbackQuery):
+async def show_race(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.offline.racing.motorcyclegame.motomax.bikerace.bike.games"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'mountain_bike_')
-async def show_moto(callback: CallbackQuery):
+async def show_mountain_bike(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.PixelJoy.MountainBikeXtreme"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'blast_')
-async def show_moto(callback: CallbackQuery):
+async def show_blast(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.aceviral.bmxblast"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
@@ -207,7 +207,7 @@ async def show_truck(callback: CallbackQuery):
             InlineKeyboardButton(text="Truckers of Europe 3 🚚", callback_data="europa_"),
             InlineKeyboardButton(text="Truck Driving School 🚚", callback_data="school_"),
             InlineKeyboardButton(text="Frontline WW2 ⛓️", callback_data="ww2_"),
-            InlineKeyboardButton(text="Offoard Truck 🚚", callback_data="offfard_"),
+            InlineKeyboardButton(text="Offoard Truck 🚚", callback_data="offard_"),
             InlineKeyboardButton(text="Truck Star 🚛", callback_data="star_"),
             InlineKeyboardButton(text="Back 🔙", callback_data="back_")
 
@@ -223,31 +223,31 @@ async def get_truc(callback: CallbackQuery):
 
 
 @dp.callback_query(F.data == 'europa_')
-async def get_truc(callback: CallbackQuery):
+async def get_europa(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.WandaSoftware.TruckersofEurope3"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'school_')
-async def get_truc(callback: CallbackQuery):
+async def get_school(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.bettergames.truck.drivingschool.simulator"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'ww2_')
-async def get_truc(callback: CallbackQuery):
+async def get_ww2(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=truck.simulator.climb.frontline"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
-@dp.callback_query(F.data == 'offfard_')
-async def get_truc(callback: CallbackQuery):
+@dp.callback_query(F.data == 'offard_')
+async def get_offard(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.pw.trucksimulatoreuro.offroadcargo"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'star_')
-async def get_truc(callback: CallbackQuery):
+async def get_star(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.vm3.global"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
@@ -295,49 +295,49 @@ async def show_hill_climb(callback: CallbackQuery):
 
 
 @dp.callback_query(F.data == 'driving_')
-async def show_hill_climb(callback: CallbackQuery):
+async def show_driving(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.ansangha.drdriving"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'racer_')
-async def show_hill_climb(callback: CallbackQuery):
+async def show_racer(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.skgames.trafficracer"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'mountain_climb_')
-async def show_hill_climb(callback: CallbackQuery):
+async def show_mountainclimb(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.dagtirmanma.oyunu"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'stock_car_')
-async def show_hill_climb(callback: CallbackQuery):
+async def show_stock_car(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.minicades.stockcars"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'extreme_')
-async def show_hill_climb(callback: CallbackQuery):
+async def show_extreme(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.aim.racing"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'speed_')
-async def show_hill_climb(callback: CallbackQuery):
+async def show_speed(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.ea.game.nfs14_row"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'dash_')
-async def show_hill_climb(callback: CallbackQuery):
+async def show_dash(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.hutchgames.hilldash2"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
 @dp.callback_query(F.data == 'crash_')
-async def show_hill_climb(callback: CallbackQuery):
+async def show_crash(callback: CallbackQuery):
     url = "https://play.google.com/store/apps/details?id=com.FailGames.RoyalCarDestroy"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
