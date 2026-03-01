@@ -272,7 +272,7 @@ async def show_car(callback: CallbackQuery):
         InlineKeyboardButton(text="Mountain Climb 🚘", callback_data="mountain_climb_"),
         InlineKeyboardButton(text="Stock Car Racing 🏎️", callback_data="stock_car_"),
         InlineKeyboardButton(text="Extreme Car 🏎", callback_data="extreme_"),
-        InlineKeyboardButton(text="Traffic racer 🏎️", callback_data="racer_"),
+        InlineKeyboardButton(text="Need for Speed 🏎️", callback_data="speed_"),
         InlineKeyboardButton(text="MIMX Hill Dash 🛻", callback_data="dash_"),
         InlineKeyboardButton(text="Car Crash Royale ⛔", callback_data="crash_"),
         InlineKeyboardButton(text="Back 🔙", callback_data="back_"),
@@ -324,9 +324,9 @@ async def show_hill_climb(callback: CallbackQuery):
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
-@dp.callback_query(F.data == 'racer_')
+@dp.callback_query(F.data == 'speed_')
 async def show_hill_climb(callback: CallbackQuery):
-    url = "https://play.google.com/store/apps/details?id=com.skgames.trafficracer"
+    url = "https://play.google.com/store/apps/details?id=com.ea.game.nfs14_row"
     await callback.message.answer(f"Siz so'ragan mashina umid qilamanki bu o'yin sizga yoqadi 😊\n\n{url}")
 
 
