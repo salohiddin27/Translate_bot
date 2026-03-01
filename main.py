@@ -1,15 +1,22 @@
 import asyncio
 import logging
 import os
+import random
 
-from aiogram import Bot, Dispatcher, F
-from aiogram.filters import CommandStart
+from aiogram import Bot, Dispatcher, F, types
+from aiogram.filters import CommandStart, Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.types import Message, InlineKeyboardButton, CallbackQuery, BotCommand
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from deep_translator import GoogleTranslator
 from dotenv import load_dotenv
+
+from present_continuous import PRESENT_CONTINUOUS_QUIZ
+from present_simple import PRESENT_SIMPLE_QUIZ
+from present_perfect import PRESENT_PERFECT_QUIZ
+from mixed_present import MIXED_PRESENT_QUIZ
+
 
 logging.basicConfig(level=logging.INFO)
 
@@ -19,6 +26,7 @@ API_TOKEN = os.getenv('BOT_TOKEN')
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
 
+quiz_data = {}
 user_languages = {}
 
 
@@ -29,6 +37,7 @@ class BotState(StatesGroup):
 async def set_main_menu(bot: Bot):
     main_menu_commands = [
         BotCommand(command='start', description='Botni ishga tushirish 🔄'),
+        BotCommand(command='stop', description="Testni to'xtatish ❌"),
     ]
     await bot.set_my_commands(main_menu_commands)
 
@@ -39,7 +48,8 @@ def get_main_menu():
         InlineKeyboardButton(text="Calculator 🔢", callback_data="calcula_"),
         InlineKeyboardButton(text="Languages 🇺🇿", callback_data="language_"),
         InlineKeyboardButton(text="English_dictionary 📚", callback_data="dictionary_"),
-        InlineKeyboardButton(text="Games 🚗", callback_data="game_")
+        InlineKeyboardButton(text="Games 🚗", callback_data="game_"),
+        InlineKeyboardButton(text="English Tests 📝", callback_data="english_test"),
     )
     ikb.adjust(2)
     return ikb.as_markup()
@@ -48,11 +58,104 @@ def get_main_menu():
 @dp.message(CommandStart())
 async def commands_start(message: Message, state: FSMContext):
     await state.clear()
-    await message.answer(
-        text="O'zizga kerakli tugmani tanlang!",
-        reply_markup=get_main_menu()
-    )
+    await message.answer(text="O'zizga kerakli bo'limni tanlang!", reply_markup=get_main_menu())
 
+
+@dp.callback_query(F.data == 'english_test')
+async def english_test(callback: CallbackQuery):
+    await callback.message.delete()
+    ikb = InlineKeyboardBuilder()
+    ikb.row(
+        InlineKeyboardButton(text="Present Simple", callback_data="quiz_ps"),
+        InlineKeyboardButton(text="Present Continuous", callback_data="quiz_pc"),
+        InlineKeyboardButton(text="Present Perfect", callback_data="quiz_pp"),
+        InlineKeyboardButton(text="Mixed Present ", callback_data="quiz_mp"),
+        InlineKeyboardButton(text="Back 🔙", callback_data="back_")
+    )
+    ikb.adjust(2)
+    await callback.message.answer("Qaysi zamon bo'yicha test topshirmoqchisiz?", reply_markup=ikb.as_markup())
+
+
+@dp.callback_query(F.data.startswith('quiz_'))
+async def start_universal_quiz(callback: CallbackQuery):
+    await callback.message.delete()
+    user_id = callback.from_user.id
+
+    quiz_type = callback.data.replace('quiz_', '')
+
+    if quiz_type == 'ps':
+        questions_pool = PRESENT_SIMPLE_QUIZ
+        title = "Present Simple"
+    elif quiz_type == 'pc':
+        questions_pool = PRESENT_CONTINUOUS_QUIZ
+        title = "Present Continuous"
+    elif quiz_type == 'pp':
+        questions_pool = PRESENT_PERFECT_QUIZ
+        title = "Present Perfect"
+    elif quiz_type == 'mp':
+        questions_pool = MIXED_PRESENT_QUIZ
+        title = "Mixed Present"
+    else:
+        return
+
+    quiz_data[user_id] = {"score": 0, "correct_options": {}, "is_active": True}
+
+    k_count = min(len(questions_pool), 30)
+    selected_questions = random.sample(questions_pool, k=k_count)
+
+    await callback.message.answer(f"🚀 {title} testi boshlandi! Jami savollar: {k_count} ta.")
+
+    for item in selected_questions:
+        if user_id not in quiz_data or not quiz_data[user_id].get("is_active"):
+            return
+
+        msg = await callback.message.answer_poll(
+            question=item['q'],
+            options=item['o'],
+            correct_option_id=item['c'],
+            type='quiz',
+            open_period=15,
+            is_anonymous=False
+        )
+
+        quiz_data[user_id]["correct_options"][msg.poll.id] = item['c']
+        await asyncio.sleep(10)
+
+    if user_id in quiz_data and quiz_data[user_id].get("is_active"):
+        final_score = quiz_data[user_id]["score"]
+        await callback.message.answer(
+            f"✅ Test tugadi!\nNatijangiz: {k_count} tadan {final_score} ta to'g'ri topdingiz."
+        )
+        del quiz_data[user_id]
+        await callback.message.answer("Asosiy menyuga qaytdingiz:", reply_markup=get_main_menu())
+
+
+@dp.poll_answer()
+async def handle_poll_answer(poll_answer: types.PollAnswer):
+    user_id = poll_answer.user.id
+    poll_id = poll_answer.poll_id
+
+    if user_id in quiz_data:
+        correct_id = quiz_data[user_id]["correct_options"].get(poll_id)
+        if poll_answer.option_ids[0] == correct_id:
+            quiz_data[user_id]["score"] += 1
+
+
+@dp.message(Command("stop"))
+async def process_stop_command(message: Message, state: FSMContext):
+    user_id = message.from_user.id
+    if user_id in quiz_data:
+        quiz_data[user_id]["is_active"] = False
+
+    await state.clear()
+    await message.answer("Asosiy menyu:", reply_markup=get_main_menu())
+
+
+@dp.callback_query(F.data == 'back_')
+async def get_to_main(callback: CallbackQuery, state: FSMContext):
+    await callback.message.delete()
+    await state.clear()
+    await callback.message.answer(text="Asosiy menyu:", reply_markup=get_main_menu())
 
 @dp.callback_query(F.data == 'game_')
 async def show_all_cars(callback: CallbackQuery):
@@ -66,7 +169,7 @@ async def show_all_cars(callback: CallbackQuery):
         InlineKeyboardButton(text="Back 🔙", callback_data="back_"),
     )
     ikb.adjust(2)
-    await callback.message.answer(f"O'zizga yoqgan o'yini tanlang! ", reply_markup=ikb.as_markup())
+    await callback.message.answer("O'zizga yoqgan o'yini tanlang! ", reply_markup=ikb.as_markup())
 
 
 @dp.callback_query(F.data == 'back_')
