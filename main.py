@@ -12,11 +12,10 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from deep_translator import GoogleTranslator
 from dotenv import load_dotenv
 
-from present_continuous import PRESENT_CONTINUOUS_QUIZ
-from present_simple import PRESENT_SIMPLE_QUIZ
-from present_perfect import PRESENT_PERFECT_QUIZ
 from mixed_present import MIXED_PRESENT_QUIZ
-
+from present_continuous import PRESENT_CONTINUOUS_QUIZ
+from present_perfect import PRESENT_PERFECT_QUIZ
+from present_simple import PRESENT_SIMPLE_QUIZ
 
 logging.basicConfig(level=logging.INFO)
 
@@ -156,6 +155,7 @@ async def get_to_main(callback: CallbackQuery, state: FSMContext):
     await callback.message.delete()
     await state.clear()
     await callback.message.answer(text="Asosiy menyu:", reply_markup=get_main_menu())
+
 
 @dp.callback_query(F.data == 'game_')
 async def show_all_cars(callback: CallbackQuery):
@@ -470,7 +470,8 @@ async def show_dictionary(callback: CallbackQuery):
         InlineKeyboardButton(text="Destination B2", callback_data="destination_b2"),
         InlineKeyboardButton(text="Destination B2 grammar", callback_data="destination_b2_grammar"),
         InlineKeyboardButton(text="Destination C1 & C2 grammar", callback_data="destination_c1c2_grammar"),
-        InlineKeyboardButton(text="Destination B2,C1-C2\nPhrasal Verbs", callback_data="destinationPhrasal_b2"),
+        InlineKeyboardButton(text="Destination B2\nC1-C2Phrasal Verbs", callback_data="destinationPhrasal_b2"),
+        InlineKeyboardButton(text="Cambridge Vocabulary\nfor IElTS", callback_data="cambridge_"),
         InlineKeyboardButton(text="Orqaga 🔙", callback_data="back_")
     )
     ikb.adjust(2)
@@ -578,6 +579,16 @@ async def open_link_3(callback: CallbackQuery):
 
     await callback.message.answer_document(document=pdf_id,
                                            caption="Mana siz so'ragan Destination C1,C2 grammar kitobi! 📚",
+                                           protect_content=True)
+    await callback.answer()
+
+
+@dp.callback_query(F.data == 'cambridge_')
+async def cambridge_link(callback: CallbackQuery):
+    pdf_id = "BQACAgQAAxkBAAIDommm0ZYE4DBt8Ns8Diaup5bnufdQAAKeDAACAm-YU9CZPa3vuGJDOgQ"
+
+    await callback.message.answer_document(document=pdf_id,
+                                           caption="Mana siz so'ragan 'Cambridge Vocabulary for IELTS' kitobi! 📚",
                                            protect_content=True)
     await callback.answer()
 
