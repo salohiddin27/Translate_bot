@@ -69,7 +69,7 @@ async def english_test(callback: CallbackQuery):
         InlineKeyboardButton(text="Present Continuous", callback_data="quiz_pc"),
         InlineKeyboardButton(text="Present Perfect", callback_data="quiz_pp"),
         InlineKeyboardButton(text="Mixed Present ", callback_data="quiz_mp"),
-        InlineKeyboardButton(text="Back 🔙", callback_data="back_")
+        InlineKeyboardButton(text="Back ←", callback_data="back_")
     )
     ikb.adjust(2)
     await callback.message.answer("Qaysi zamon bo'yicha test topshirmoqchisiz?", reply_markup=ikb.as_markup())
@@ -166,7 +166,7 @@ async def show_all_cars(callback: CallbackQuery):
         InlineKeyboardButton(text="Truck 🚛", callback_data="track_"),
         InlineKeyboardButton(text="Motorbikes 🏍️", callback_data="motor_bice_"),
         InlineKeyboardButton(text="Archery game 🏹", callback_data="kamon_"),
-        InlineKeyboardButton(text="Back 🔙", callback_data="back_"),
+        InlineKeyboardButton(text="Back ←", callback_data="back_"),
     )
     ikb.adjust(2)
     await callback.message.answer("O'zizga yoqgan o'yini tanlang! ", reply_markup=ikb.as_markup())
@@ -190,7 +190,7 @@ async def show_shot(callback: CallbackQuery):
             InlineKeyboardButton(text="Angry Birds 🐦", callback_data="birds_"),
             InlineKeyboardButton(text="Thetan Immortal 🦸", callback_data="immortal_"),
             InlineKeyboardButton(text="Archer Shooter 🏹🎯", callback_data="shooter_"),
-            InlineKeyboardButton(text="Back 🔙", callback_data="back_"),
+            InlineKeyboardButton(text="Back ←", callback_data="back_"),
 
             )
     ikb.adjust(2)
@@ -251,7 +251,7 @@ async def show_motor_bice(callback: CallbackQuery):
             InlineKeyboardButton(text="MRM Bike Racing 🏍️🏁", callback_data="race_"),
             InlineKeyboardButton(text="Mountain Bike 🚵", callback_data="mountain_bike_"),
             InlineKeyboardButton(text="Bike Blast 🚴🏻‍♂️", callback_data="blast_"),
-            InlineKeyboardButton(text="Back 🔙", callback_data="back_"),
+            InlineKeyboardButton(text="Back ←", callback_data="back_"),
 
             )
     ikb.adjust(2)
@@ -312,7 +312,7 @@ async def show_truck(callback: CallbackQuery):
             InlineKeyboardButton(text="Frontline WW2 ⛓️", callback_data="ww2_"),
             InlineKeyboardButton(text="Offoard Truck 🚚", callback_data="offard_"),
             InlineKeyboardButton(text="Truck Star 🚛", callback_data="star_"),
-            InlineKeyboardButton(text="Back 🔙", callback_data="back_")
+            InlineKeyboardButton(text="Back ←", callback_data="back_")
 
             )
     ikb.adjust(2)
@@ -378,7 +378,7 @@ async def show_car(callback: CallbackQuery):
         InlineKeyboardButton(text="Need for Speed 🏎️", callback_data="speed_"),
         InlineKeyboardButton(text="MIMX Hill Dash 🛻", callback_data="dash_"),
         InlineKeyboardButton(text="Car Crash Royale ⛔", callback_data="crash_"),
-        InlineKeyboardButton(text="Back 🔙", callback_data="back_"),
+        InlineKeyboardButton(text="Back ←", callback_data="back_"),
 
     )
     ikb.adjust(2)
@@ -472,7 +472,7 @@ async def show_dictionary(callback: CallbackQuery):
         InlineKeyboardButton(text="Destination C1 & C2 grammar", callback_data="destination_c1c2_grammar"),
         InlineKeyboardButton(text="Destination B2\nC1-C2Phrasal Verbs", callback_data="destinationPhrasal_b2"),
         InlineKeyboardButton(text="Cambridge Vocabulary\nfor IElTS", callback_data="cambridge_"),
-        InlineKeyboardButton(text="Orqaga 🔙", callback_data="back_")
+        InlineKeyboardButton(text="Orqaga ←", callback_data="back_")
     )
     ikb.adjust(2)
     await callback.message.edit_text("O'zizga kerakli tugmani tanlang!", reply_markup=ikb.as_markup())
@@ -644,7 +644,7 @@ async def show_languages(callback: CallbackQuery, state: FSMContext):
     for text, code in languages:
         ikb.add(InlineKeyboardButton(text=text, callback_data=f'setlang_{code}'))
     ikb.adjust(2)
-    ikb.row(InlineKeyboardButton(text='Back 🔙', callback_data='back_'))
+    ikb.row(InlineKeyboardButton(text='Back ←', callback_data='back_'))
     await callback.message.answer("Tarjima tilini tanlang:", reply_markup=ikb.as_markup())
     await callback.answer()
 
