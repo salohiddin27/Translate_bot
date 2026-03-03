@@ -46,7 +46,7 @@ def get_main_menu():
     ikb.row(
         InlineKeyboardButton(text="Calculator 🔢", callback_data="calcula_"),
         InlineKeyboardButton(text="Languages 🇺🇿", callback_data="language_"),
-        InlineKeyboardButton(text="English_dictionary 📚", callback_data="dictionary_"),
+        InlineKeyboardButton(text="English dictionary 📚", callback_data="dictionary_"),
         InlineKeyboardButton(text="Games 🚗", callback_data="game_"),
         InlineKeyboardButton(text="English Tests 📝", callback_data="english_test"),
     )
@@ -455,27 +455,86 @@ async def get_to_main(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
 
 
+books_list = [
+    ("Essential Words 1", "essential_1"),
+    ("Essential Words 2", "essential_2"),
+    ("Essential Words 3", "essential_3"),
+    ("Essential Words 4", "essential_4"),
+    ("Essential Words 5", "essential_5"),
+    ("Destination B1", "destination_b1"),
+    ("Destination B1 grammar", "destination_b1_grammar"),
+    ("Destination B1Phrasal Verbs", "destinationPhrasal_b1"),
+    ("Destination B2", "destination_b2"),
+    ("Destination B2 grammar", "destination_b2_grammar"),
+    ("Destination C1 & C2 grammar", "destination_c1c2_grammar"),
+    ("Destination B2,C1-C2 Phrasal Verbs", "destinationPhrasal_b2"),
+    ("Cambridge Vocabulary for IElTS", "cambridge_")
+]
+
+
 @dp.callback_query(F.data == 'dictionary_')
 async def show_dictionary(callback: CallbackQuery):
     ikb = InlineKeyboardBuilder()
+
+    for title, call_data in books_list[0:6]:
+        ikb.row(InlineKeyboardButton(text=title, callback_data=call_data))
+
     ikb.row(
-        InlineKeyboardButton(text="Essential Words 1", callback_data="essential_1"),
-        InlineKeyboardButton(text="Essential Words 2", callback_data="essential_2"),
-        InlineKeyboardButton(text="Essential Words 3", callback_data="essential_3"),
-        InlineKeyboardButton(text="Essential Words 4", callback_data="essential_4"),
-        InlineKeyboardButton(text="Essential Words 5", callback_data="essential_5"),
-        InlineKeyboardButton(text="Destination B1", callback_data="destination_b1"),
-        InlineKeyboardButton(text="Destination B1 grammar", callback_data="destination_b1_grammar"),
-        InlineKeyboardButton(text="Destination B1\nPhrasal Verbs", callback_data="destinationPhrasal_b1"),
-        InlineKeyboardButton(text="Destination B2", callback_data="destination_b2"),
-        InlineKeyboardButton(text="Destination B2 grammar", callback_data="destination_b2_grammar"),
-        InlineKeyboardButton(text="Destination C1 & C2 grammar", callback_data="destination_c1c2_grammar"),
-        InlineKeyboardButton(text="Destination B2\nC1-C2Phrasal Verbs", callback_data="destinationPhrasal_b2"),
-        InlineKeyboardButton(text="Cambridge Vocabulary\nfor IElTS", callback_data="cambridge_"),
-        InlineKeyboardButton(text="Orqaga ←", callback_data="back_")
+        InlineKeyboardButton(text="← Back", callback_data="back_"),  # Asosiy menyuga
+        InlineKeyboardButton(text="Next →", callback_data="next:6")  # 2-sahifaga
     )
-    ikb.adjust(2)
-    await callback.message.edit_text("O'zizga kerakli tugmani tanlang!", reply_markup=ikb.as_markup())
+
+    ikb.adjust(1)
+    await callback.message.edit_text("Lug'at bo'limi. 1-sahifa", reply_markup=ikb.as_markup())
+    await callback.answer()
+
+
+@dp.callback_query(F.data.startswith("next:"))
+async def after_next(callback: CallbackQuery):
+    current_index = int(callback.data.split(":")[1])
+
+    if current_index == 0:
+        await show_dictionary(callback)
+        return
+
+    current_books = books_list[current_index: current_index + 6]
+
+    if not current_books:
+        await callback.answer("Boshqa kitob qolmadi!", show_alert=True)
+        return
+
+    ikb = InlineKeyboardBuilder()
+
+    for title, call_data in current_books:
+        ikb.row(InlineKeyboardButton(text=title, callback_data=call_data))
+
+    nav_buttons = []
+
+    back_target = f"next:{current_index - 6}"
+    nav_buttons.append(InlineKeyboardButton(text="← Back", callback_data=back_target))
+
+    if current_index + 6 < len(books_list):
+        nav_buttons.append(InlineKeyboardButton(text="Next →", callback_data=f"next:{current_index + 6}"))
+
+    ikb.row(*nav_buttons)
+    ikb.adjust(1)
+
+    page_num = current_index // 6 + 1
+    await callback.message.edit_text(
+        f"Lug'at bo'limi. {page_num}-sahifa",
+        reply_markup=ikb.as_markup()
+    )
+    await callback.answer()
+
+
+@dp.callback_query(F.data == "back_")
+async def back_to_main(callback: CallbackQuery, state: FSMContext):
+    await state.clear()
+    await callback.message.edit_text(
+        text="O'zizga kerakli tugmani tanlang!",
+        reply_markup=get_main_menu()
+    )
+    await callback.answer()
 
 
 @dp.callback_query(F.data == 'essential_1')
