@@ -7,10 +7,11 @@ from aiogram import Bot, Dispatcher, F, types
 from aiogram.filters import CommandStart, Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
-from aiogram.types import Message, InlineKeyboardButton, CallbackQuery, BotCommand
+from aiogram.types import Message, InlineKeyboardButton, CallbackQuery, BotCommand, FSInputFile
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from deep_translator import GoogleTranslator
 from dotenv import load_dotenv
+from gtts import gTTS
 
 from mixed_present import MIXED_PRESENT_QUIZ
 from present_continuous import PRESENT_CONTINUOUS_QUIZ
@@ -55,9 +56,20 @@ def get_main_menu():
 
 
 @dp.message(CommandStart())
-async def commands_start(message: Message, state: FSMContext):
+async def commands_start(message: types.Message, state: FSMContext):
     await state.clear()
-    await message.answer(text="O'zizga kerakli bo'limni tanlang!", reply_markup=get_main_menu())
+
+    text = "Please choose the button you need?"
+    audio_path = "audios/welcome.mp3"
+
+    tts = gTTS(text=text, lang="en")
+    tts.save(audio_path)
+
+    await message.answer_voice(
+        voice=FSInputFile(audio_path),
+        caption=text,
+        reply_markup=get_main_menu()
+    )
 
 
 @dp.callback_query(F.data == 'english_test')
