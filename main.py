@@ -62,7 +62,7 @@ async def commands_start(message: types.Message, state: FSMContext):
     text = "Please choose the button you need?"
     audio_path = "audios/welcome.mp3"
 
-    tts = gTTS(text=text, lang="en")
+    tts = gTTS(text=text, lang="en", tld="co.uk")
     tts.save(audio_path)
 
     await message.answer_voice(
